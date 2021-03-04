@@ -13,7 +13,7 @@ namespace ConsoleUI
         {
             //CarTest();
             //
-            //RentalGetAll();
+            GetRentalDetails();
 
             //RentalAdd();
 
@@ -28,12 +28,12 @@ namespace ConsoleUI
             Console.WriteLine(result.Message);
         }
 
-        private static void RentalGetAll()
+        private static void GetRentalDetails()
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            foreach (var rental in rentalManager.GetAll().Data)
+            foreach (var rental in rentalManager.GetRentalDetail().Data)
             {
-                Console.WriteLine(rental.Id);
+                Console.WriteLine( "Car Name: {0},  RentDate: {1}, ReturnDate: {2} ", rental.CarName,rental.RentDate.Date,rental.ReturnDate);
             }
         }
 
@@ -60,7 +60,7 @@ namespace ConsoleUI
         private static void RentalAdd()
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            var result = rentalManager.Add(new Rental { CarId = 3, CustomerId = 2, RentDate = new DateTime(2021,02,02) ,ReturnDate = DateTime.Now});
+            var result = rentalManager.Add(new Rental { CarId = 3, CustomerId = 3, RentDate = new DateTime(2021,02,02) });
             Console.WriteLine(result.Message);
         }
 
