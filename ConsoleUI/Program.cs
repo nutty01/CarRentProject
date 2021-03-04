@@ -30,7 +30,7 @@ namespace ConsoleUI
             //    Console.WriteLine(car.Description + " $" + car.DailyPrice);
             //}
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine("Car Name: {0} -- Brand Name: {1} -- Color Name: {2} -- Daily Price: {3}" ,car.CarName,car.BrandName,car.ColorName,car.DailyPrice);
             }
