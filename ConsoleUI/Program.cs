@@ -13,7 +13,7 @@ namespace ConsoleUI
         {
             //CarTest();
             //
-            GetRentalDetails();
+            //GetRentalDetails();
 
             //RentalAdd();
 
