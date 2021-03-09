@@ -73,7 +73,6 @@ namespace WebAPI.Controllers
 
         
 
-
         [HttpGet("getcarsbybrandid")]
         public IActionResult GetCarsByBrandId(int id)
         {

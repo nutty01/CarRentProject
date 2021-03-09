@@ -20,5 +20,10 @@ namespace Business.Constants
         public static string CarsListed = "Cars listed";
         public static string UserAdded = "User Added";
         public static string CarNotAvailable = "Car is not available";
+        public static string CarImagesListed="Car Images listed";
+        public static string CarImageAdded="Car Image added";
+        public static string CarImageDeleted="Car Image deleted";
+        public static string CarImageUpdated="Car Image updated";
+        public static string CarImageLimitExceeded="Maximum 5 images can be uploaded";
     }
 }
