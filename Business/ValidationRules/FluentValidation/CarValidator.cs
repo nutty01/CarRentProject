@@ -12,7 +12,7 @@ namespace Business.ValidationRules.FluentValidation
         public CarValidator()
         {
 
-            RuleFor(c => c.Description).MinimumLength(3).WithMessage("Car description must be at least 10 characters");
+            RuleFor(c => c.Description).MinimumLength(2).WithMessage("Car description must be at least 2 characters");
             RuleFor(c => c.DailyPrice).GreaterThan(0);
             RuleFor(c => c.ModelYear).GreaterThan(0);
 

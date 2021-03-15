@@ -27,16 +27,14 @@ namespace Business.Concrete
          {
              return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails()) ;
          }
-         //[SecuredOperation("product.add,admin")]
+         [SecuredOperation("car.add,admin")]
          [ValidationAspect(typeof(CarValidator))]
          public IResult Add(Car car)
          {
-
              _carDal.Add(car);
 
              return new SuccessResult(Messages.CarAdded);
-             
-        }
+         }
 
         public IResult Delete(Car car)
         {
