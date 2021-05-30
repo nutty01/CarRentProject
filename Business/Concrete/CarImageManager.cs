@@ -70,6 +70,39 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarImageUpdated);
         }
 
+        public IDataResult<List<CarImage>> GetImagesByCarId(int id)
+        {
+            IResult result = BusinessRules.Run(CheckIfCarImageNull(id));
+
+            if (result != null)
+            {
+                return new ErrorDataResult<List<CarImage>>(result.Message);
+            }
+
+            return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(id).Data);
+        }
+
+
+        private IDataResult<List<CarImage>> CheckIfCarImageNull(int id)
+        {
+            try
+            {
+                string path = @"\images\logo.jpg";
+                var result = _carImageDal.GetAll(c => c.CarId == id).Any();
+                if (!result)
+                {
+                    List<CarImage> carImage = new List<CarImage>();
+                    carImage.Add(new CarImage { CarId = id, ImagePath = path, Date = DateTime.Now });
+                    return new SuccessDataResult<List<CarImage>>(carImage);
+                }
+            }
+            catch (Exception exception)
+            {
+                return new ErrorDataResult<List<CarImage>>(exception.Message);
+            }
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == id));
+        }
+
         private IResult CheckImageLimitExceeded(int carId)
         {
             var carImageCount = _carImageDal.GetAll(c => c.CarId == carId).Count;
